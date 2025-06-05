@@ -105,9 +105,19 @@ class AccessLogMiddleware:
                 data = func(scope, info)  # type: ignore[arg-type]
                 if data is not None:
                     _vars[key] = data
+            print("daksh_test")
+            self.logger.info("daksh_test")
+
             if _vars:
                 structlog.contextvars.bind_contextvars(**_vars)
             x = AccessLogAtoms(scope=scope, info=info)
+            print("daksh_test2")
+            self.logger.info("daksh_test2")
+
+            print("atom", x)
+            print("format", self.format)
+            print(self.format, x)
+            
             self.logger.info("atom", x)
             self.logger.info("format", self.format)
             self.logger.info(self.format, x)
