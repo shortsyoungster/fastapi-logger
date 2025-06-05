@@ -108,7 +108,7 @@ class AccessLogMiddleware:
             if _vars:
                 structlog.contextvars.bind_contextvars(**_vars)
 
-            self.logger.info(self.format, AccessLogAtoms(scope=scope, info=info))
+            self.logger.info(self.format, **AccessLogAtoms(scope=scope, info=info))
 
 
 class AccessLogAtoms(dict[str, Any]):
